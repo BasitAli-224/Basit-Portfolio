@@ -112,11 +112,11 @@ const SITE_PROJECTS = [
     videoUrl:    "https://www.youtube.com/embed/dQw4w9WgXcQ"  // ← EDIT VIDEO LINK
   },
   {
-    title:       "City Pulse",
-    category:    "Music Video",
-    description: "Dynamic social media ad campaign featuring high-speed rhythmic editing.",
+    title:       "Here is how i earned",
+    category:    "VFX",
+    description: "Dynamic social media reel featuring dropshipping integrated with modern tools.",
     thumbnail:   "",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/dQw4w9WgXcQ"  // ← EDIT VIDEO LINK
+    videoUrl:    "https://www.youtube.com/embed/eSoetsANlK8"  // ← EDIT VIDEO LINK
   },
   {
     title:       "Deep Frequencies",
