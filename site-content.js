@@ -98,47 +98,27 @@ const SITE_HERO = {
 ==================================================================== */
 const SITE_PROJECTS = [
   {
-    title:       "Neon Horizon",
-    category:    "Commercial",
-    description: "Cyberpunk-inspired commercial reel with custom 3D typography and glitch effects.",
-    thumbnail:   "",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/dQw4w9WgXcQ"  // ← EDIT VIDEO LINK
+    title:       "Heres how you can",
+    category:    "Reels",
+    description: "For corporate employees to get promoted.",
+    thumbnail:   "promoted.jpeg",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/RhrmIoHrJB4"  // ← EDIT VIDEO LINK
   },
   {
-    title:       "Ethereal Particles",
-    category:    "VFX",
-    description: "Experimental particle simulation for a luxury watch brand reveal sequence.",
-    thumbnail:   "",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/dQw4w9WgXcQ"  // ← EDIT VIDEO LINK
+    title:       "Captions and subs tutorial",
+    category:    "commercial",
+    description: "A 1920 by 1080 p video ,in which a youtuber explais how to add dynamic subs.",
+    thumbnail:   "caps.jpeg",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/TBjJ6zwNd2I"  // ← EDIT VIDEO LINK
   },
   {
     title:       "Here is how i earned",
     category:    "VFX",
     description: "Dynamic social media reel featuring dropshipping integrated with modern tools.",
-    thumbnail:   "",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    thumbnail:   "freelance.jpeg",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
     videoUrl:    "https://www.youtube.com/embed/eSoetsANlK8"  // ← EDIT VIDEO LINK
   },
-  {
-    title:       "Deep Frequencies",
-    category:    "3D Motion",
-    description: "Abstract 3D motion piece exploring sound and visual rhythm for a music label.",
-    thumbnail:   "",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/dQw4w9WgXcQ"  // ← EDIT VIDEO LINK
-  },
-  {
-    title:       "Parallax Dreams",
-    category:    "VFX",
-    description: "Immersive VFX short blending real footage with procedural 3D environments.",
-    thumbnail:   "",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/dQw4w9WgXcQ"  // ← EDIT VIDEO LINK
-  },
-  {
-    title:       "Brand Manifesto",
-    category:    "Commercial",
-    description: "60-second brand film balancing kinetic typography with emotional storytelling.",
-    thumbnail:   "",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/dQw4w9WgXcQ"  // ← EDIT VIDEO LINK
-  }
+  
   /* ── ADD NEW PROJECT HERE ──────────────────────────────────────
   ,{
     title:       "Your Project Title",
