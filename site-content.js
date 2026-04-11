@@ -48,9 +48,9 @@ const SITE_NAV = {
                  → leave as "" to show a placeholder box
 ==================================================================== */
 const SITE_HERO = {
-  badgeText:    "Available for Projects",
+  badgeText:    "its not just about the story",
   firstName:    "Basit",
-  lastName:     "Ali",
+  lastName:     "edits",
   roles: [
     "Video Editor",
     "Motion Graphics Artist",
@@ -210,15 +210,15 @@ const SITE_CONTACT = {
   heading:    "Ready to start your",
   accentLine: "Next Project?",
   subtext:    "I'm currently accepting new projects and collaborations. Let's create something extraordinary together.",
-  email:      "hello@besitali.design",
+  email:      "basitarshada@gmail.com",
   formLabels: {
     name:    "Name",
     email:   "Email",
     message: "Message"
   },
   formPlaceholders: {
-    name:    "John Doe",
-    email:   "john@example.com",
+    name:    "your name",
+    email:   "client@example.com",
     message: "Tell me about your project..."
   },
   submitLabel: "Send Message"
