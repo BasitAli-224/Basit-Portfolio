@@ -113,14 +113,16 @@ const SITE_PROJECTS = [
     category:    "Reels",
     description: "A 1920 by 1080 p video ,in which a youtuber explais how to add dynamic subs.",
     thumbnail:   "caps.jpeg",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/TBjJ6zwNd2I"  // ← EDIT VIDEO LINK
+    videoUrl:    "https://www.youtube.com/embed/TBjJ6zwNd2I",
+    aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
   },
   {
     title:       "Here is how i earned",
     category:    "Reels",
     description: "Dynamic social media reel featuring dropshipping integrated with modern tools.",
     thumbnail:   "freelance.jpeg",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/eSoetsANlK8"  // ← EDIT VIDEO LINK
+    videoUrl:    "https://www.youtube.com/embed/eSoetsANlK8",
+    aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
   },
   {
     title:       "LANG EASE AI ",
@@ -162,7 +164,8 @@ const SITE_PROJECTS = [
     category:    "REELS",
     description: "How Drake went from",
     thumbnail:   "drake.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/XtpZAryTwZc"  // ← EDIT VIDEO LINK
+    videoUrl:    "https://www.youtube.com/embed/XtpZAryTwZc",
+    aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
   },
   {
     title:       "BIT MAXIIMUM ",
