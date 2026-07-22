@@ -151,7 +151,7 @@ const SITE_PROJECTS = [
     title:       "Heres how you can",
     category:    "Reels",
     description: "For corporate employees to get promoted.",
-    thumbnail:   "promoted.jpeg",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    thumbnail:   "promoted.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
     videoUrl:    "https://www.youtube.com/embed/RhrmIoHrJB4",  // ← EDIT VIDEO LINK
     aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
   },
@@ -167,7 +167,7 @@ const SITE_PROJECTS = [
     title:       "Captions and subs tutorial",
     category:    "Reels",
     description: "A 1920 by 1080 p video ,in which a youtuber explais how to add dynamic subs.",
-    thumbnail:   "caps.jpeg",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    thumbnail:   "caps.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
     videoUrl:    "https://www.youtube.com/embed/TBjJ6zwNd2I",  // ← EDIT VIDEO LINK
     aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
   },
@@ -175,7 +175,7 @@ const SITE_PROJECTS = [
     title:       "Here is how i earned",
     category:    "Reels",
     description: "Dynamic social media reel featuring dropshipping integrated with modern tools.",
-    thumbnail:   "freelance.jpeg",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    thumbnail:   "freelance.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
     videoUrl:    "https://www.youtube.com/embed/eSoetsANlK8",  // ← EDIT VIDEO LINK
     aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
   }
