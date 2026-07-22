@@ -129,6 +129,7 @@ const SITE_PROJECTS = [
     thumbnail:   "bitm.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
     videoUrl:    "https://www.youtube.com/embed/PCDvwX0QnpM"  // ← EDIT VIDEO LINK
   },
+
   // ── DOCUMENTARY (landscape) ───────────────────────────────────
   {
     title:       "IRAN-US WAR ",
@@ -144,6 +145,7 @@ const SITE_PROJECTS = [
     thumbnail:   "drake.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
     videoUrl:    "https://www.youtube.com/embed/XtpZAryTwZc"  // ← EDIT VIDEO LINK
   },
+
   // ── REELS (portrait 9:16) ─────────────────────────────────────
   {
     title:       "Heres how you can",
@@ -154,11 +156,19 @@ const SITE_PROJECTS = [
     aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
   },
   {
+    title:       "(Just) DRAKE",
+    category:    "Reels",
+    description: "How Drake went from",
+    thumbnail:   "drake.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/XtpZAryTwZc",  // ← EDIT VIDEO LINK
+    aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
+  },
+  {
     title:       "Captions and subs tutorial",
     category:    "Reels",
     description: "A 1920 by 1080 p video ,in which a youtuber explais how to add dynamic subs.",
     thumbnail:   "caps.jpeg",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/TBjJ6zwNd2I",
+    videoUrl:    "https://www.youtube.com/embed/TBjJ6zwNd2I",  // ← EDIT VIDEO LINK
     aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
   },
   {
@@ -166,17 +176,9 @@ const SITE_PROJECTS = [
     category:    "Reels",
     description: "Dynamic social media reel featuring dropshipping integrated with modern tools.",
     thumbnail:   "freelance.jpeg",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/eSoetsANlK8",
+    videoUrl:    "https://www.youtube.com/embed/eSoetsANlK8",  // ← EDIT VIDEO LINK
     aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
-  },
-  {
-    title:       "(Just) DRAKE",
-    category:    "Reels",
-    description: "How Drake went from",
-    thumbnail:   "drake.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/XtpZAryTwZc",
-    aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
-  },
+  }
   /* ── ADD NEW PROJECT HERE ──────────────────────────────────────
   ,{
     title:       "Your Project Title",
