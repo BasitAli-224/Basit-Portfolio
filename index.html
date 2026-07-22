@@ -426,15 +426,23 @@ else{imgWrap.innerHTML=`<div class="hero-img-placeholder"><span>Set heroImage in
 /* ═══ 3. FILTERS ═════════════════════════════════════════════ */
 function buildFilters(){
   const bar=document.getElementById('filterBar');
-  ['All',...new Set(SITE_PROJECTS.map(p=>p.category))].forEach(cat=>{
+  /* De-duplicate categories case-insensitively, keeping the first spelling */
+  const seen=new Map();
+  SITE_PROJECTS.forEach(p=>{const key=p.category.toLowerCase();if(!seen.has(key))seen.set(key,p.category)});
+  const cats=[...seen.values()];
+  const defaultCat=cats[0]||'';
+  cats.forEach((cat,i)=>{
     const btn=document.createElement('button');
-    btn.className='chip'+(cat==='All'?' active':'');btn.textContent=cat;
-    btn.addEventListener('click',()=>{
-      document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));btn.classList.add('active');
-      document.querySelectorAll('.project-card').forEach(c=>c.classList.toggle('hidden',cat!=='All'&&c.dataset.category!==cat));
-    });
+    btn.className='chip'+(i===0?' active':'');btn.textContent=cat;btn.dataset.cat=cat;
+    btn.addEventListener('click',()=>filterTo(cat));
     bar.appendChild(btn);
   });
+  /* Run initial filter so only the default category is visible */
+  filterTo(defaultCat);
+}
+function filterTo(cat){
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active',c.dataset.cat===cat));
+  document.querySelectorAll('.project-card').forEach(c=>c.classList.toggle('hidden',c.dataset.category.toLowerCase()!==cat.toLowerCase()));
 }
 
 /* ═══ 4. CARDS ═══════════════════════════════════════════════ */
@@ -515,7 +523,7 @@ function updateNav(){
 window.addEventListener('scroll',updateNav,{passive:true});
 
 /* ═══ INIT ═══════════════════════════════════════════════════ */
-buildFilters();buildCards();buildCollab();buildContact();buildFooter();observeAll();startRoleCycle();
+buildCards();buildFilters();buildCollab();buildContact();buildFooter();observeAll();startRoleCycle();
 </script>
 </body>
 </html>

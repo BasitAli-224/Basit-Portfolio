@@ -100,6 +100,51 @@ const SITE_HERO = {
    ────────────────────────────────────────────────────────────────
 ==================================================================== */
 const SITE_PROJECTS = [
+  // ── SAAS EXPLAINER (landscape) ────────────────────────────────
+  {
+    title:       "LANG EASE AI ",
+    category:    "SAAS EXPLAINER",
+    description: "A seemles explainer video that is smooth and hooks the viewer entirely.",
+    thumbnail:   "langease.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/0zEfq0ZBJEQ"  // ← EDIT VIDEO LINK
+  },
+  {
+    title:       "Gemini AI",
+    category:    "SAAS EXPLAINER",
+    description: "seemlessnes makes a video look short.",
+    thumbnail:   "gemini.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/GVrptFYkZco"  // ← EDIT VIDEO LINK
+  },
+  {
+    title:       "FRAMER ",
+    category:    "SAAS EXPLAINER",
+    description: "A WEB builder providing better and advanced workflow for websites development",
+    thumbnail:   "framer.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/hfbwzLbi6LY"  // ← EDIT VIDEO LINK
+  },
+  {
+    title:       "BIT MAXIIMUM ",
+    category:    "SAAS EXPLAINER",
+    description: "A seamless explainer video that is smooth and hooks the viewer entirely.",
+    thumbnail:   "bitm.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/PCDvwX0QnpM"  // ← EDIT VIDEO LINK
+  },
+  // ── DOCUMENTARY (landscape) ───────────────────────────────────
+  {
+    title:       "IRAN-US WAR ",
+    category:    "DOCUMENTARY",
+    description: "Documentary covering modern escallation and outrage of countaries leading to ___.",
+    thumbnail:   "iranus.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/0zEfq0ZBJEQ"  // ← EDIT VIDEO LINK
+  },
+  {
+    title:       "(Just) DRAKE",
+    category:    "DOCUMENTARY",
+    description: "How Drake went from",
+    thumbnail:   "drake.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/XtpZAryTwZc"  // ← EDIT VIDEO LINK
+  },
+  // ── REELS (portrait 9:16) ─────────────────────────────────────
   {
     title:       "Heres how you can",
     category:    "Reels",
@@ -125,54 +170,12 @@ const SITE_PROJECTS = [
     aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
   },
   {
-    title:       "LANG EASE AI ",
-    category:    "SAAS EXPLAINER",
-    description: "A seemles explainer video that is smooth and hooks the viewer entirely.",
-    thumbnail:   "langease.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/0zEfq0ZBJEQ"  // ← EDIT VIDEO LINK
-  },
-  {
-    title:       "Gemini AI",
-    category:    "SAAS EXPLAINER",
-    description: "seemlessnes makes a video look short.",
-    thumbnail:   "gemini.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/GVrptFYkZco"  // ← EDIT VIDEO LINK
-  },
-  {
-    title:       "FRAMER ",
-    category:    "SAAS EXPLAINER",
-    description: "A WEB builder providing better and advanced workflow for websites development",
-    thumbnail:   "framer.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/hfbwzLbi6LY"  // ← EDIT VIDEO LINK
-  },
-  {
-    title:       "IRAN-US WAR ",
-    category:    "DOCUMENTARY",
-    description: "Documentary covering modern escallation and outrage of countaries leading to ___.",
-    thumbnail:   "iranus.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/0zEfq0ZBJEQ"  // ← EDIT VIDEO LINK
-  },
-  {
     title:       "(Just) DRAKE",
-    category:    "DOCUMENTARY",
-    description: "How Drake went from",
-    thumbnail:   "drake.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/XtpZAryTwZc"  // ← EDIT VIDEO LINK
-  },
-   {
-    title:       "(Just) DRAKE",
-    category:    "REELS",
+    category:    "Reels",
     description: "How Drake went from",
     thumbnail:   "drake.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
     videoUrl:    "https://www.youtube.com/embed/XtpZAryTwZc",
     aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
-  },
-  {
-    title:       "BIT MAXIIMUM ",
-    category:    "SAAS EXPLAINER",
-    description: "A seamless explainer video that is smooth and hooks the viewer entirely.",
-    thumbnail:   "bitm.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/PCDvwX0QnpM"  // ← EDIT VIDEO LINK
   },
   /* ── ADD NEW PROJECT HERE ──────────────────────────────────────
   ,{
