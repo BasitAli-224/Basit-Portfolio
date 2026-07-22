@@ -210,6 +210,14 @@ footer p{font-size:.78rem;color:var(--muted)}
 .modal-close:hover{background:rgba(0,221,221,.15);border-color:var(--teal);box-shadow:0 0 14px rgba(0,221,221,.3)}
 .modal-close svg{width:14px;height:14px;stroke:var(--on-surface);fill:none;stroke-width:2;stroke-linecap:round}
 
+/* ── Portrait Cards (9:16 Reels / Shorts) ── */
+.project-card.is-portrait .card-thumb{padding-top:177.77%}
+.project-card.is-portrait .card-thumb img{object-position:center top}
+
+/* ── Portrait Modal ── */
+.modal-overlay.is-portrait .modal-box{max-width:420px}
+.modal-overlay.is-portrait .modal-video-wrap{padding-top:177.77%}
+
 /* ── Responsive ── */
 @media(max-width:900px){.hero-inner{grid-template-columns:1fr;text-align:center;padding:60px 24px 50px}.hero-right{display:none}.hero-btns{justify-content:center}.available-badge{margin:0 auto}nav{padding:0 24px}.works-section,.collab-section,.contact-section{padding:60px 24px}footer{padding:1.5rem 24px}.portfolio-grid{grid-template-columns:repeat(2,1fr)}.contact-inner{grid-template-columns:1fr;gap:2.5rem}}
 @media(max-width:600px){.nav-links{display:none}.form-row{grid-template-columns:1fr}.portfolio-grid{grid-template-columns:1fr}.collab-card{max-width:100%}body{cursor:auto}#cursor-dot,#cursor-ring{display:none}}
@@ -434,7 +442,7 @@ function buildCards(){
   const grid=document.getElementById('portfolioGrid');grid.innerHTML='';
   SITE_PROJECTS.forEach((p,i)=>{
     const card=document.createElement('div');
-    card.className='project-card reveal-scale';card.dataset.category=p.category;
+    card.className='project-card reveal-scale'+(p.aspectRatio==='portrait'?' is-portrait':'');card.dataset.category=p.category;
     card.setAttribute('role','button');card.setAttribute('tabindex','0');card.setAttribute('aria-label','Play '+p.title);
     card.style.transitionDelay=(i%3)*.09+'s';
     const thumb=p.thumbnail?`<img src="${p.thumbnail}" alt="${p.title}" loading="lazy"/>`:`<div class="thumb-ph"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(0,221,221,0.2)" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>`;
@@ -485,7 +493,7 @@ function buildFooter(){
 
 /* ═══ 8. MODAL ═══════════════════════════════════════════════ */
 const overlay=document.getElementById('modalOverlay'),iframe=document.getElementById('modalIframe'),modalTitle=document.getElementById('modalTitle'),modalDesc=document.getElementById('modalDesc');
-function openModal(i){const p=SITE_PROJECTS[i];iframe.src=p.videoUrl+'?autoplay=1&rel=0';modalTitle.textContent=p.title;modalDesc.textContent=p.description;overlay.classList.add('open');document.body.style.overflow='hidden'}
+function openModal(i){const p=SITE_PROJECTS[i];iframe.src=p.videoUrl+'?autoplay=1&rel=0';modalTitle.textContent=p.title;modalDesc.textContent=p.description;overlay.classList.toggle('is-portrait',p.aspectRatio==='portrait');overlay.classList.add('open');document.body.style.overflow='hidden'}
 function closeModal(){overlay.classList.remove('open');iframe.src='';document.body.style.overflow=''}
 document.getElementById('modalClose').addEventListener('click',closeModal);
 overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal()});
