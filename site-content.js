@@ -82,6 +82,8 @@ const SITE_HERO = {
      videoUrl    — YouTube embed URL
                    From: youtube.com/watch?v=VIDEO_ID
                    Paste: "https://www.youtube.com/embed/VIDEO_ID"
+     aspectRatio — "portrait" for vertical 9:16 videos (Reels/Shorts)
+                   leave out or set to "landscape" for normal 16:9 videos
 
    ── ADD A NEW PROJECT ───────────────────────────────────────────
    Copy the block below, paste it at the end of the array
@@ -92,7 +94,8 @@ const SITE_HERO = {
      category:    "VFX",
      description: "Short description of this project.",
      thumbnail:   "thumbs/new-project.jpg",
-     videoUrl:    "https://www.youtube.com/embed/YOUR_VIDEO_ID"
+     videoUrl:    "https://www.youtube.com/embed/YOUR_VIDEO_ID",
+     aspectRatio: "portrait"
    }
    ────────────────────────────────────────────────────────────────
 ==================================================================== */
@@ -102,23 +105,72 @@ const SITE_PROJECTS = [
     category:    "Reels",
     description: "For corporate employees to get promoted.",
     thumbnail:   "promoted.jpeg",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/RhrmIoHrJB4"  // ← EDIT VIDEO LINK
+    videoUrl:    "https://www.youtube.com/embed/RhrmIoHrJB4",  // ← EDIT VIDEO LINK
+    aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
   },
   {
     title:       "Captions and subs tutorial",
-    category:    "commercial",
+    category:    "Reels",
     description: "A 1920 by 1080 p video ,in which a youtuber explais how to add dynamic subs.",
     thumbnail:   "caps.jpeg",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
     videoUrl:    "https://www.youtube.com/embed/TBjJ6zwNd2I"  // ← EDIT VIDEO LINK
   },
   {
     title:       "Here is how i earned",
-    category:    "VFX",
+    category:    "Reels",
     description: "Dynamic social media reel featuring dropshipping integrated with modern tools.",
     thumbnail:   "freelance.jpeg",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
     videoUrl:    "https://www.youtube.com/embed/eSoetsANlK8"  // ← EDIT VIDEO LINK
   },
-  
+  {
+    title:       "LANG EASE AI ",
+    category:    "SAAS EXPLAINER",
+    description: "A seemles explainer video that is smooth and hooks the viewer entirely.",
+    thumbnail:   "langease.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/0zEfq0ZBJEQ"  // ← EDIT VIDEO LINK
+  },
+  {
+    title:       "Gemini AI",
+    category:    "SAAS EXPLAINER",
+    description: "seemlessnes makes a video look short.",
+    thumbnail:   "gemini.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/GVrptFYkZco"  // ← EDIT VIDEO LINK
+  },
+  {
+    title:       "FRAMER ",
+    category:    "SAAS EXPLAINER",
+    description: "A WEB builder providing better and advanced workflow for websites development",
+    thumbnail:   "framer.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/hfbwzLbi6LY"  // ← EDIT VIDEO LINK
+  },
+  {
+    title:       "IRAN-US WAR ",
+    category:    "DOCUMENTARY",
+    description: "Documentary covering modern escallation and outrage of countaries leading to ___.",
+    thumbnail:   "iranus.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/0zEfq0ZBJEQ"  // ← EDIT VIDEO LINK
+  },
+  {
+    title:       "(Just) DRAKE",
+    category:    "DOCUMENTARY",
+    description: "How Drake went from",
+    thumbnail:   "drake.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/XtpZAryTwZc"  // ← EDIT VIDEO LINK
+  },
+   {
+    title:       "(Just) DRAKE",
+    category:    "REELS",
+    description: "How Drake went from",
+    thumbnail:   "drake.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/XtpZAryTwZc"  // ← EDIT VIDEO LINK
+  },
+  {
+    title:       "BIT MAXIIMUM ",
+    category:    "SAAS EXPLAINER",
+    description: "A seamless explainer video that is smooth and hooks the viewer entirely.",
+    thumbnail:   "bitm.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/PCDvwX0QnpM"  // ← EDIT VIDEO LINK
+  },
   /* ── ADD NEW PROJECT HERE ──────────────────────────────────────
   ,{
     title:       "Your Project Title",
@@ -212,7 +264,7 @@ const SITE_CONTACT = {
    links     — array of { label, href } shown bottom-right
 ==================================================================== */
 const SITE_FOOTER = {
-  copyright: "© 2024 Basit Ali. All Rights Reserved.",
+  copyright: "© 2026 Basit Ali. All Rights Reserved.",
   links: [
     { label: "Fiverr",     href: "#" },
     { label: "Instagram",  href: "#" },
