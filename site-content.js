@@ -136,7 +136,7 @@ const SITE_PROJECTS = [
     category:    "DOCUMENTARY",
     description: "Documentary covering modern escallation and outrage of countaries leading to ___.",
     thumbnail:   "iranus.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
-    videoUrl:    "https://www.youtube.com/embed/0zEfq0ZBJEQ"  // ← EDIT VIDEO LINK
+    videoUrl:    "https://www.youtube.com/embed/65SVMb_EYsA"  // ← EDIT VIDEO LINK
   },
   {
     title:       "(Just) DRAKE",
