@@ -56,6 +56,17 @@ nav.scrolled{background:rgba(8,11,14,.97);box-shadow:0 4px 40px rgba(0,0,0,.5)}
 .nav-cta:hover{box-shadow:0 0 22px rgba(0,221,221,.6);transform:translateY(-1px)}
 @keyframes shimmer{to{transform:translateX(100%)}}
 
+/* ── Sound Toggle ── */
+#soundToggle{background:rgba(0,221,221,.08);border:1px solid rgba(0,221,221,.25);color:var(--teal);width:34px;height:34px;border-radius:8px;cursor:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .3s ease,box-shadow .3s ease,border-color .3s ease;margin-right:.75rem}
+#soundToggle:hover{background:rgba(0,221,221,.18);box-shadow:0 0 14px rgba(0,221,221,.3);border-color:var(--teal)}
+#soundToggle svg{width:16px;height:16px;fill:none;stroke:var(--teal);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:opacity .2s}
+#soundToggle.muted svg{opacity:.4}
+
+/* ── Hover Video Preview ── */
+.card-thumb .hover-iframe-wrap{position:absolute;inset:0;z-index:3;opacity:0;transition:opacity .45s ease;pointer-events:none}
+.card-thumb .hover-iframe-wrap.visible{opacity:1}
+.card-thumb .hover-iframe-wrap iframe{width:100%;height:100%;border:none;pointer-events:none}
+
 /* ── HERO ── */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--bg);padding-top:60px;z-index:1}
 .hero-hexgrid{position:absolute;inset:0;z-index:0;background-image:radial-gradient(circle,rgba(0,221,221,.12) 1px,transparent 1px);background-size:28px 28px;animation:hexDrift 22s linear infinite}
@@ -233,6 +244,9 @@ footer p{font-size:.78rem;color:var(--muted)}
 <nav id="siteNav">
   <a href="#home" class="nav-logo" id="navLogo"></a>
   <ul class="nav-links" id="navLinks"></ul>
+  <button id="soundToggle" aria-label="Toggle sound effects" title="Toggle UI sounds">
+    <svg id="soundIcon" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path id="soundWave1" d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path id="soundWave2" d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+  </button>
   <a class="nav-cta" id="navCta"></a>
 </nav>
 
@@ -380,15 +394,39 @@ function startRoleCycle(){
   setInterval(()=>{spans.forEach(s=>s.classList.remove('highlight'));idx=(idx+1)%spans.length;spans[idx].classList.add('highlight')},2400);
 }
 
-/* ═══ CARD TILT ══════════════════════════════════════════════ */
+/* ═══ CARD TILT + HOVER VIDEO PREVIEW ═══════════════════════ */
 function initTilt(){
-  document.querySelectorAll('.project-card').forEach(card=>{
+  document.querySelectorAll('.project-card').forEach((card,idx)=>{
+    /* tilt */
     card.addEventListener('mousemove',e=>{
       const r=card.getBoundingClientRect();
       const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
       card.style.transform=`perspective(700px) rotateY(${x*10}deg) rotateX(${-y*10}deg) translateY(-6px)`;
     });
-    card.addEventListener('mouseleave',()=>{card.style.transform=''});
+    card.addEventListener('mouseleave',()=>{
+      card.style.transform='';
+      /* remove hover iframe */
+      const wrap=card.querySelector('.hover-iframe-wrap');
+      if(wrap){wrap.classList.remove('visible');setTimeout(()=>wrap.remove(),450);}
+    });
+    /* hover video preview */
+    let hoverTimer=null;
+    card.addEventListener('mouseenter',()=>{
+      playSound('hover');
+      if(card.querySelector('.hover-iframe-wrap'))return;
+      hoverTimer=setTimeout(()=>{
+        const p=SITE_PROJECTS[parseInt(card.dataset.idx)];
+        if(!p||!p.videoUrl)return;
+        const vid=p.videoUrl.replace('/embed/','/embed/');
+        const wrap=document.createElement('div');
+        wrap.className='hover-iframe-wrap';
+        /* muted + autoplay + no controls + loop — works in all modern browsers */
+        wrap.innerHTML=`<iframe src="${vid}?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=${vid.split('/').pop()}&start=3" allow="autoplay" allowfullscreen></iframe>`;
+        card.querySelector('.card-thumb').appendChild(wrap);
+        requestAnimationFrame(()=>requestAnimationFrame(()=>wrap.classList.add('visible')));
+      },500); /* 500ms delay before preview fires */
+    });
+    card.addEventListener('mouseleave',()=>clearTimeout(hoverTimer),{once:false});
   });
 }
 
@@ -442,6 +480,7 @@ function buildFilters(){
   filterTo(defaultCat);
 }
 function filterTo(cat){
+  playSound('chip');
   document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active',c.dataset.cat===cat));
   document.querySelectorAll('.project-card').forEach(c=>c.classList.toggle('hidden',c.dataset.category.toLowerCase()!==cat.toLowerCase()));
 }
@@ -452,6 +491,7 @@ function buildCards(){
   SITE_PROJECTS.forEach((p,i)=>{
     const card=document.createElement('div');
     card.className='project-card reveal-scale'+(p.aspectRatio==='portrait'?' is-portrait':'');card.dataset.category=p.category;
+    card.dataset.idx=i; /* store global index for hover preview */
     card.setAttribute('role','button');card.setAttribute('tabindex','0');card.setAttribute('aria-label','Play '+p.title);
     card.style.transitionDelay=(i%3)*.09+'s';
     const thumb=p.thumbnail?`<img src="${p.thumbnail}" alt="${p.title}" loading="lazy"/>`:`<div class="thumb-ph"><svg viewBox="0 0 24 24" fill="none" stroke="rgba(0,221,221,0.2)" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>`;
@@ -502,11 +542,46 @@ function buildFooter(){
 
 /* ═══ 8. MODAL ═══════════════════════════════════════════════ */
 const overlay=document.getElementById('modalOverlay'),iframe=document.getElementById('modalIframe'),modalTitle=document.getElementById('modalTitle'),modalDesc=document.getElementById('modalDesc');
-function openModal(i){const p=SITE_PROJECTS[i];iframe.src=p.videoUrl+'?autoplay=1&rel=0';modalTitle.textContent=p.title;modalDesc.textContent=p.description;overlay.classList.toggle('is-portrait',p.aspectRatio==='portrait');overlay.classList.add('open');document.body.style.overflow='hidden'}
-function closeModal(){overlay.classList.remove('open');iframe.src='';document.body.style.overflow=''}
+function openModal(i){playSound('open');const p=SITE_PROJECTS[i];iframe.src=p.videoUrl+'?autoplay=1&rel=0';modalTitle.textContent=p.title;modalDesc.textContent=p.description;overlay.classList.toggle('is-portrait',p.aspectRatio==='portrait');overlay.classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(){playSound('close');overlay.classList.remove('open');iframe.src='';document.body.style.overflow=''}
 document.getElementById('modalClose').addEventListener('click',closeModal);
 overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+/* ═══ SOUND SYSTEM (Web Audio API — no files needed) ══════════ */
+let audioCtx=null,soundMuted=false;
+function getCtx(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();return audioCtx;}
+function playTone(freq,type,dur,vol,attack,decay){
+  if(soundMuted)return;
+  try{
+    const ctx=getCtx();
+    const osc=ctx.createOscillator(),gain=ctx.createGain();
+    osc.type=type;osc.frequency.setValueAtTime(freq,ctx.currentTime);
+    gain.gain.setValueAtTime(0,ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(vol,ctx.currentTime+attack);
+    gain.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+attack+decay);
+    osc.connect(gain);gain.connect(ctx.destination);
+    osc.start(ctx.currentTime);osc.stop(ctx.currentTime+dur);
+  }catch(e){}
+}
+function playSound(type){
+  if(soundMuted)return;
+  if(type==='hover'){playTone(880,'sine',.12,.05,.005,.115);}
+  else if(type==='chip'){playTone(660,'triangle',.18,.08,.005,.175);playTone(880,'triangle',.18,.04,.03,.15);}
+  else if(type==='open'){playTone(440,'sine',.08,.07,.005,.07);setTimeout(()=>playTone(660,'sine',.15,.06,.005,.14),60);setTimeout(()=>playTone(880,'sine',.22,.05,.005,.21),120);}
+  else if(type==='close'){playTone(440,'sine',.12,.06,.005,.11);setTimeout(()=>playTone(330,'sine',.18,.05,.005,.17),70);}
+}
+/* Sound toggle button */
+const soundBtn=document.getElementById('soundToggle');
+soundBtn.addEventListener('click',()=>{
+  soundMuted=!soundMuted;
+  soundBtn.classList.toggle('muted',soundMuted);
+  soundBtn.title=soundMuted?'Sound off — click to enable':'Sound on — click to mute';
+  document.getElementById('soundWave1').style.opacity=soundMuted?'0':'1';
+  document.getElementById('soundWave2').style.opacity=soundMuted?'0':'1';
+  /* play a little click to confirm un-mute */
+  if(!soundMuted)setTimeout(()=>playSound('chip'),10);
+});
 
 /* ═══ 9. FORM ════════════════════════════════════════════════ */
 function handleSubmit(e){
