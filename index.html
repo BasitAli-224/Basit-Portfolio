@@ -395,38 +395,38 @@ function startRoleCycle(){
 }
 
 /* ═══ CARD TILT + HOVER VIDEO PREVIEW ═══════════════════════ */
+/* Preload: inject hidden iframes into every visible card so hover = instant */
+function preloadVisibleIframes(){
+  document.querySelectorAll('.project-card:not(.hidden)').forEach(card=>{
+    if(card.querySelector('.hover-iframe-wrap'))return; /* already injected */
+    const p=SITE_PROJECTS[parseInt(card.dataset.idx)];
+    if(!p||!p.videoUrl)return;
+    const vid=p.videoUrl;
+    const wrap=document.createElement('div');
+    wrap.className='hover-iframe-wrap';
+    wrap.innerHTML=`<iframe src="${vid}?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=${vid.split('/').pop()}&start=8" allow="autoplay" allowfullscreen></iframe>`;
+    card.querySelector('.card-thumb').appendChild(wrap);
+  });
+}
 function initTilt(){
-  document.querySelectorAll('.project-card').forEach((card,idx)=>{
+  document.querySelectorAll('.project-card').forEach(card=>{
     /* tilt */
     card.addEventListener('mousemove',e=>{
       const r=card.getBoundingClientRect();
       const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
       card.style.transform=`perspective(700px) rotateY(${x*10}deg) rotateX(${-y*10}deg) translateY(-6px)`;
     });
-    card.addEventListener('mouseleave',()=>{
-      card.style.transform='';
-      /* remove hover iframe */
-      const wrap=card.querySelector('.hover-iframe-wrap');
-      if(wrap){wrap.classList.remove('visible');setTimeout(()=>wrap.remove(),450);}
-    });
-    /* hover video preview */
-    let hoverTimer=null;
+    /* hover: just flip opacity — iframe is already buffering in background */
     card.addEventListener('mouseenter',()=>{
       playSound('hover');
-      if(card.querySelector('.hover-iframe-wrap'))return;
-      hoverTimer=setTimeout(()=>{
-        const p=SITE_PROJECTS[parseInt(card.dataset.idx)];
-        if(!p||!p.videoUrl)return;
-        const vid=p.videoUrl.replace('/embed/','/embed/');
-        const wrap=document.createElement('div');
-        wrap.className='hover-iframe-wrap';
-        /* muted + autoplay + no controls + loop — works in all modern browsers */
-        wrap.innerHTML=`<iframe src="${vid}?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=${vid.split('/').pop()}&start=8" allow="autoplay" allowfullscreen></iframe>`;
-        card.querySelector('.card-thumb').appendChild(wrap);
-        requestAnimationFrame(()=>requestAnimationFrame(()=>wrap.classList.add('visible')));
-      },150); /* 150ms delay before preview fires */
+      const wrap=card.querySelector('.hover-iframe-wrap');
+      if(wrap)wrap.classList.add('visible');
     });
-    card.addEventListener('mouseleave',()=>clearTimeout(hoverTimer),{once:false});
+    card.addEventListener('mouseleave',()=>{
+      card.style.transform='';
+      const wrap=card.querySelector('.hover-iframe-wrap');
+      if(wrap)wrap.classList.remove('visible');
+    });
   });
 }
 
@@ -482,7 +482,14 @@ function buildFilters(){
 function filterTo(cat){
   playSound('chip');
   document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active',c.dataset.cat===cat));
-  document.querySelectorAll('.project-card').forEach(c=>c.classList.toggle('hidden',c.dataset.category.toLowerCase()!==cat.toLowerCase()));
+  document.querySelectorAll('.project-card').forEach(c=>{
+    const hide=c.dataset.category.toLowerCase()!==cat.toLowerCase();
+    c.classList.toggle('hidden',hide);
+    /* remove stale iframe from cards being hidden to free memory */
+    if(hide){const w=c.querySelector('.hover-iframe-wrap');if(w)w.remove();}
+  });
+  /* preload iframes for newly visible cards after filter animation settles */
+  setTimeout(preloadVisibleIframes,300);
 }
 
 /* ═══ 4. CARDS ═══════════════════════════════════════════════ */
@@ -501,6 +508,8 @@ function buildCards(){
     grid.appendChild(card);
   });
   initTilt();observeAll();
+  /* Start preloading iframes for default visible cards after a short settle */
+  setTimeout(preloadVisibleIframes,400);
 }
 
 /* ═══ 5. COLLAB ══════════════════════════════════════════════ */
