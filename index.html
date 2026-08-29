@@ -395,7 +395,7 @@ function startRoleCycle(){
 }
 
 /* ═══ CARD TILT + HOVER VIDEO PREVIEW ═══════════════════════ */
-/* Preload: inject hidden iframes into every visible card so hover = instant */
+/* Preload/Load on demand from 0:00 (start of video) */
 function preloadVisibleIframes(){
   document.querySelectorAll('.project-card:not(.hidden)').forEach(card=>{
     if(card.querySelector('.hover-iframe-wrap'))return; /* already injected */
@@ -404,7 +404,7 @@ function preloadVisibleIframes(){
     const vid=p.videoUrl;
     const wrap=document.createElement('div');
     wrap.className='hover-iframe-wrap';
-    wrap.innerHTML=`<iframe src="${vid}?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=${vid.split('/').pop()}&start=8" allow="autoplay" allowfullscreen></iframe>`;
+    wrap.innerHTML=`<iframe src="${vid}?autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=${vid.split('/').pop()}&start=0" allow="autoplay" allowfullscreen></iframe>`;
     card.querySelector('.card-thumb').appendChild(wrap);
   });
 }
