@@ -163,7 +163,7 @@ const SITE_PROJECTS = [
     videoUrl:    "https://www.youtube.com/embed/7Mobi1Lbwak",  // ← EDIT VIDEO LINK
     aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
   },
-  
+
   {
     title:       "Real state Reel",
     category:    "Reels",
