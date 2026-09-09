@@ -148,6 +148,31 @@ const SITE_PROJECTS = [
 
   // ── REELS (portrait 9:16) ─────────────────────────────────────
   {
+    title:       "Real state talking Head",
+    category:    "Reels",
+    description: "Real state reels are all about premium feel and clarity.",
+    thumbnail:   "R2.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/CIy79UFWEQA",  // ← EDIT VIDEO LINK
+    aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
+  },
+  {
+    title:       "Building a personal brand",
+    category:    "Reels",
+    description: "Tips to build a strong personal brand..",
+    thumbnail:   "tk.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/7Mobi1Lbwak",  // ← EDIT VIDEO LINK
+    aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
+  },
+  
+  {
+    title:       "Real state Reel",
+    category:    "Reels",
+    description: "A realtor showcasing a property in visually apealing way.",
+    thumbnail:   "R1.png",   // ← add your thumbnail path here when ready, e.g. "thumbs/project.jpg"
+    videoUrl:    "https://www.youtube.com/embed/JsQhrF7hGAU",  // ← EDIT VIDEO LINK
+    aspectRatio: "portrait"  // ← vertical 9:16 format for Reels/Shorts
+  },
+  {
     title:       "Heres how you can",
     category:    "Reels",
     description: "For corporate employees to get promoted.",
